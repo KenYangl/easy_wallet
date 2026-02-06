@@ -32,7 +32,7 @@ class HomeController extends GetxController {
   
   /// 导航到设置页面
   void navigateToSettingsPage() {
-    Get.toNamed(AppRoutes.getFullRoute(AppRoutes.settings));
+    Get.toNamed(AppRoutes.settings);
   }
 
   /// 导航到转账页面

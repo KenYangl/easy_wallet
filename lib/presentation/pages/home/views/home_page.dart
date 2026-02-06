@@ -85,34 +85,40 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
     return Scaffold(
       appBar: _buildTopNavigationBar(colors),
       backgroundColor: colors.backgroundApp,
-      body: CustomScrollView(
-        slivers: [
+      body: NestedScrollView(
+        headerSliverBuilder: (context, innerBoxIsScrolled) {
+          return [
           // 总资产区域
           SliverToBoxAdapter(
             child: _buildAssetSection(colors),
           ),
 
-          const SizedBox(height: 16),
+          const SliverPadding(
+            padding: EdgeInsets.only(top: 16),
+          ),
 
           // 转账/收款/购买/交易历史 按钮区域
           SliverToBoxAdapter(
             child: _buildFunctionSection(colors, homeController),
           ),
 
-          const SizedBox(height: 16),
+          const SliverPadding(
+            padding: EdgeInsets.only(top: 16),
+          ),
 
           // 轮播图区域
           SliverToBoxAdapter(
             child: _buildCarouselSection(colors),
           ),
 
+          const SliverPadding(
+            padding: EdgeInsets.only(top: 16),
+          ),
+
           // 粘性头部（币种/NFT 标签）
-          SliverStickyHeader(
-            header: Container(
-              height: 56,
-              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
-              color: colors.backgroundApp,
-              child: TabBar(
+          SliverPersistentHeader(
+            delegate: _SliverTabHeaderDelegate(
+              TabBar(
                 controller: _tabController,
                 labelColor: colors.brandPrimary,
                 unselectedLabelColor: Colors.grey,
@@ -126,21 +132,23 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                   Tab(text: 'NFT'),
                 ],
               ),
+              56, // 高度
+              colors.backgroundApp, // 背景色
             ),
-            sliver: SliverFillRemaining(
-              child: TabBarView(
-                controller: _tabController,
-                children: [
-                  // 币种标签页（动态 ListView）
-                  _buildTokenListView(colors),
-                  // NFT标签页（可动态加载）
-                  _buildNftTabView(colors),
-                ],
-              ),
-            )
-          )
-        ],
-      )
+            pinned: true, // 固定在顶部
+          ),
+          ];
+        },
+        body: TabBarView(
+        controller: _tabController,
+        children: [
+          // 币种标签页
+          _buildTokenListView(colors),
+          // NFT标签页
+          _buildNftTabView(colors),
+          ],
+        ),
+      ),
     );
   }
 
@@ -300,5 +308,35 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         ],
       ),
     );
+  }
+}
+
+  // 自定义 Sliver Header Delegate
+class _SliverTabHeaderDelegate extends SliverPersistentHeaderDelegate {
+  final TabBar tabBar;
+  final double height;
+  final Color backgroundColor;
+
+  _SliverTabHeaderDelegate(this.tabBar, this.height, this.backgroundColor);
+
+  @override
+  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return Container(
+      height: height,
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
+      color: backgroundColor,
+      child: tabBar,
+    );
+  }
+
+  @override
+  double get maxExtent => height;
+
+  @override
+  double get minExtent => height;
+
+  @override
+  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
+    return false;
   }
 }

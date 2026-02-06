@@ -1,10 +1,10 @@
-## easy_wallet
+## Easy Wallet
 
-一个用于练习 Flutter、GetX、Hive 等技术栈的钱包类应用 demo。
+一个用于练习 Flutter、GetX、Hive 等技术栈的去中心化钱包类应用 demo。
 
 ---
 
-### **lib 目录结构说明（重点）**
+### **lib 目录结构说明**
 
 ```text
 lib/

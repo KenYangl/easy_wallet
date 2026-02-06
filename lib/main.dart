@@ -26,9 +26,6 @@ void main() async {
   // final prefs = await SharedPreferences.getInstance();
   // final hasWallet = prefs.getBool(StorageKeys.hasWallet) ?? false;
 
-  // 初始化绑定
-  // InitialBindings().dependencies();
-
   // 3. 启动应用
   const String initialRoute = AppRoutes.onboarding;
   runApp(const MyApp(initialRoute: initialRoute));

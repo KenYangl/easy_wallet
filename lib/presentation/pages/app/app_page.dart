@@ -5,39 +5,37 @@ import 'app_controller.dart';
 class AppPage extends StatefulWidget {
   const AppPage({super.key});
 
+  @override
   State<AppPage> createState() => _AppState();
 }
 
 class _AppState extends State<AppPage> {
   final AppController _appController = Get.find<AppController>();
-  int selectedIndex = 0;
 
   @override
   void initState() {
     super.initState();
   }
 
-  void setIndex(int index) {
-    if (selectedIndex != index) {
-      selectedIndex = index;
-      setState(() {});
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _appController.pages[selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
+      body: Obx(() => IndexedStack(
+        index: _appController.selectedIndex,
+        children: _appController.pages,
+      )),
+      bottomNavigationBar: Obx(() => BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        currentIndex: selectedIndex,
-        onTap: setIndex,
+        currentIndex: _appController.selectedIndex,
+        onTap: (index) {
+          _appController.selectedIndex = index;
+        },
         items: _appController.navigationBars.map((item) => BottomNavigationBarItem(
           icon: item['icon']!,
           activeIcon: item['selectedIcon']!,
           label: item['label']!,
         )).toList(),
-      ),
+      )),
     );
   }
 }

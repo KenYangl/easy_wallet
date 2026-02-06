@@ -27,7 +27,7 @@ class OnboardingPage extends StatelessWidget {
             children: [
 
               // 轮播组件
-              SizedBox(
+              const SizedBox(
                 height: 400.0,
                 child: OnboardingCarousel(),
               ),
