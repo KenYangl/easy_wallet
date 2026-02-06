@@ -44,7 +44,7 @@ class AppRoutes {
   static final List<GetPage> getPages = [
     // Onboarding 流程
     GetPage(name: onboarding, page: () => const OnboardingPage()),
-    GetPage(name: createWallet, page: () => const CreateWalletPage()),
+    GetPage(name: createWallet, page: () => CreateWalletPage()),
     GetPage(name: importWallet, page: () => const ImportWalletPage()),
     GetPage(name: backupWalletTips, page: () => const BackupWalletTipsPage()),
 
@@ -53,11 +53,11 @@ class AppRoutes {
       name: app,
       page: () => const AppPage(),
       children: [
-        GetPage(name: home, page: () => const HomePage()),
+        GetPage(name: home, page: () => HomePage()),
         GetPage(name: swap, page: () => SwapPage()),
         GetPage(name: defi, page: () => const DefiPage()),
         GetPage(name: discover, page: () => const DiscoverPage()),
-        GetPage(name: settings, page: () => const SettingsPage()),
+        GetPage(name: settings, page: () => SettingsPage()),
         GetPage(name: selectWallet, page: () => const SelectWalletPage()),
         GetPage(name: send, page: () => const SendPage()),
         GetPage(name: receive, page: () => const ReceivePage()),

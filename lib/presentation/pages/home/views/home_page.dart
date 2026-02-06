@@ -9,7 +9,9 @@ import '/core/constants/app_colors.dart';
 import '/presentation/pages/home/widgets/home_navigation_bar.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  HomePage({super.key}) {
+    Get.put(HomeController());
+  }
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -80,8 +82,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   @override
   Widget build(BuildContext context) {
     final colors = AppColors.of(context);
-
-    final homeController = Get.put(HomeController());
+    final homeController = Get.find<HomeController>();
 
     return Scaffold(
       appBar: _buildTopNavigationBar(colors),

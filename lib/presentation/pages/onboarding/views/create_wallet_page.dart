@@ -4,12 +4,14 @@ import 'package:get/get.dart';
 import '/presentation/pages/onboarding/controllers/create_wallet_controller.dart';
 
 class CreateWalletPage extends StatelessWidget {
-  const CreateWalletPage({super.key});
+  CreateWalletPage({super.key}) {
+    Get.put(CreateWalletController());
+  }
 
   @override
   Widget build(BuildContext context) {
 
-    final controller = Get.put(CreateWalletController());
+    final controller = Get.find<CreateWalletController>();
     
     return Scaffold(
       backgroundColor: Colors.white,

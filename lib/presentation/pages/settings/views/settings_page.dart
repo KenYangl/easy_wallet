@@ -8,12 +8,14 @@ import '../widgets/setting_item.dart';
 import '/presentation/pages/app/app_controller.dart';
 
 class SettingsPage extends StatelessWidget {
-  const SettingsPage({super.key});
+  SettingsPage({super.key}) {
+    Get.put(SettingsController());
+  }
 
   @override
   Widget build(BuildContext context) {
     final appController = Get.find<AppController>();
-    final settingsController = Get.put(SettingsController());
+    final settingsController = Get.find<SettingsController>();
 
     final colors = AppColors.of(context);
     return Scaffold(
