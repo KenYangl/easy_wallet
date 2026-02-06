@@ -59,7 +59,7 @@ class CreateWalletPage extends StatelessWidget {
                 height: 50,
                 child: ElevatedButton(
                   onPressed: () {
-                    controller.navigateToBackupWalletTips();
+                    controller.navigateToBackupWalletTipsPage();
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF80E8FF),

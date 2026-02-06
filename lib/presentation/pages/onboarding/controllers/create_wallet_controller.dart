@@ -9,7 +9,7 @@ class CreateWalletController extends GetxController {
   }
 
   /// 导航到备份钱包提示页面
-  void navigateToBackupWalletTips() {
+  void navigateToBackupWalletTipsPage() {
     Get.toNamed(AppRoutes.backupWalletTips);
   }
 }

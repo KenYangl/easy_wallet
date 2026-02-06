@@ -238,7 +238,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
           },
           onCopyTap: () {
             // 处理复制钱包地址点击事件
-            homeController.navigateToCopyAddressPage();
+            homeController.navigateToAddressPage();
           },
           onNotificationTap: () {
             // 处理通知点击事件

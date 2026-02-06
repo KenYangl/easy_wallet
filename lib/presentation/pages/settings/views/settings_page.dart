@@ -1,8 +1,10 @@
 import 'package:easy_wallet/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../controllers/settings_controller.dart';
 import '../widgets/setting_item.dart';
-import '/core/utils/getx_extensions.dart';
+
 import '/presentation/pages/app/app_controller.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -11,6 +13,8 @@ class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appController = Get.find<AppController>();
+    final settingsController = Get.put(SettingsController());
+
     final colors = AppColors.of(context);
     return Scaffold(
       backgroundColor: colors.backgroundApp,
@@ -43,6 +47,7 @@ class SettingsPage extends StatelessWidget {
                 title: '钱包设置',
                 onTap: () {
                   // 跳转到钱包设置页面
+                  settingsController.navigateToWalletSettingPage();
                 },
               ),
               // 语言
@@ -52,6 +57,7 @@ class SettingsPage extends StatelessWidget {
                 subtitle: '简体中文',
                 onTap: () {
                   // 跳转到语言设置页面
+                  settingsController.navigateToLanguageSelectPage();
                 },
               ),
               // 货币
@@ -61,6 +67,7 @@ class SettingsPage extends StatelessWidget {
                 subtitle: 'USD',
                 onTap: () {
                   // 跳转到货币设置页面
+                  settingsController.navigateToCurrencySettingPage();
                 },
               ),
               // 安全
@@ -69,6 +76,7 @@ class SettingsPage extends StatelessWidget {
                 title: '安全',
                 onTap: () {
                   // 跳转到安全设置页面
+                  settingsController.navigateToSecuritySettingPage();
                 },
               ),
               // 地址簿
@@ -77,6 +85,7 @@ class SettingsPage extends StatelessWidget {
                 title: '地址簿',
                 onTap: () {
                   // 跳转到地址簿页面
+                  settingsController.navigateToAddressBookPage();
                 },
               ),
               // 主题模式
@@ -99,6 +108,7 @@ class SettingsPage extends StatelessWidget {
                   subtitle: themeText,
                   onTap: () {
                     // 跳转到主题设置页面
+                    settingsController.navigateToThemeSelectPage();
                   },
                 );
               }),
@@ -108,6 +118,7 @@ class SettingsPage extends StatelessWidget {
                 title: '关于我们',
                 onTap: () {
                   // 跳转到关于我们页面
+                  settingsController.navigateToAboutPage();
                 },
               ),
             ],

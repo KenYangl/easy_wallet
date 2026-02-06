@@ -16,7 +16,7 @@ class HomeController extends GetxController {
   }
 
   /// 导航到复制地址页面
-  void navigateToCopyAddressPage() {
+  void navigateToAddressPage() {
     Get.toNamed('/defi');
   }
   
