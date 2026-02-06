@@ -18,7 +18,7 @@ class AppController extends GetxController {
 
   final List<Widget> pages = [
     const HomePage(),
-    const SwapPage(),
+    SwapPage(),
     const DefiPage(),
     const DiscoverPage(),
   ];

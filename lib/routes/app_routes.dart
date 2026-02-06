@@ -46,7 +46,7 @@ class AppRoutes {
       page: () => const AppPage(),
       children: [
         GetPage(name: home, page: () => const HomePage()),
-        GetPage(name: swap, page: () => const SwapPage()),
+        GetPage(name: swap, page: () => SwapPage()),
         GetPage(name: defi, page: () => const DefiPage()),
         GetPage(name: discover, page: () => const DiscoverPage()),
         GetPage(name: settings, page: () => const SettingsPage()),
