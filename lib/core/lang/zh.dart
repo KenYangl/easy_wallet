@@ -1,0 +1,16 @@
+const Map<String, String> zh = {
+  'app_name': '去中心化钱包',
+  'onboarding_title1': '自主掌控链上资产',
+  'onboarding_title2': '钱包、交易、NFT、理财',
+  'onboarding_title3': '通往web3的门户',
+  'onboarding_create': '创建新钱包',
+  'onboarding_import': '导入已有钱包',
+  'wallet_home': '钱包首页',
+  'assets': '资产',
+  'transactions': '交易记录',
+  'settings': '设置',
+  'theme': '主题设置',
+  'language': '语言设置',
+  'dark_mode': '暗黑模式',
+  'light_mode': '亮色模式',
+};

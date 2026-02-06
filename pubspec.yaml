@@ -1,0 +1,58 @@
+name: easy_wallet                       
+description: "A new Flutter project." 
+publish_to: 'none'    
+
+version: 1.0.0+1                      # 版本号+构建号
+
+environment:
+  sdk: '>=2.18.2 <3.0.0'              # Dart SDK版本范围
+
+dependencies:
+  flutter:
+    sdk: flutter                      # Flutter SDK
+
+  #cupertino_icons: ^1.0.2             # Cupertino图标库
+  get: ^4.6.5                         # GetX状态管理/路由
+
+  # 网络相关
+  dio: ^4.0.6
+  dio_cookie_manager: ^2.0.0
+  #web3dart: ^2.7.0                    # 区块链交互（EVM兼容链）
+  #http: ^1.1.0                       # 基础网络（配合web3dart）
+
+  # UI和图片
+  #flutter_svg: ^1.1.6                 # 适配旧版本SDK
+  cached_network_image: ^3.2.3        # 网络图片缓存
+  lottie: ^2.0.0                      # Lottie动画
+  carousel_slider: ^4.2.1             # 轮播图
+
+  # 本地路径和存储
+  path_provider: ^2.1.0               # 获取本地路径
+  shared_preferences: ^2.1.2          # 轻量本地存储（状态配置）
+
+  # 安全和加密
+  local_auth: ^2.1.6                  # 本地认证（指纹/面容）
+  #flutter_secure_storage: ^8.0.0      # 安全存储（私钥/助记词）
+  encrypt: ^5.0.1                     # 加密工具
+
+  # 数据库
+  hive: ^2.2.3                        # 本地数据库（钱包数据）
+  hive_flutter: ^1.1.0                # Hive Flutter适配
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter                      # Flutter测试框架
+
+  flutter_lints: ^2.0.2
+
+  # 序列化和数据处理
+  json_annotation: ^4.8.1             # JSON序列化
+  build_runner: ^2.3.3                # 代码生成（JSON/Hive）
+  json_serializable: ^6.6.0           # JSON序列化代码生成
+  hive_generator: ^2.0.0              # Hive模型生成
+
+flutter:
+  uses-material-design: true          # 使用Material Design
+  assets:
+    - assets/images/                   # 图片资源
+    - assets/svgs/                     # SVG图片资源  
