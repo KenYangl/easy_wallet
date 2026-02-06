@@ -1,5 +1,11 @@
 import 'package:get/get.dart';
 
+// bindings
+import '/core/bindings/settings_binding.dart';
+import '/core/bindings/create_wallet_binding.dart';
+import '/core/bindings/swap_binding.dart';
+import '/core/bindings/home_binding.dart';
+
 import '/presentation/pages/home/views/buy_page.dart';
 import '/presentation/pages/home/views/receive_page.dart';
 import '/presentation/pages/home/views/send_page.dart';
@@ -44,7 +50,7 @@ class AppRoutes {
   static final List<GetPage> getPages = [
     // Onboarding 流程
     GetPage(name: onboarding, page: () => const OnboardingPage()),
-    GetPage(name: createWallet, page: () => CreateWalletPage()),
+    GetPage(name: createWallet, page: () => const CreateWalletPage(), binding: CreateWalletBinding()),
     GetPage(name: importWallet, page: () => const ImportWalletPage()),
     GetPage(name: backupWalletTips, page: () => const BackupWalletTipsPage()),
 
@@ -53,11 +59,11 @@ class AppRoutes {
       name: app,
       page: () => const AppPage(),
       children: [
-        GetPage(name: home, page: () => HomePage()),
-        GetPage(name: swap, page: () => SwapPage()),
+        GetPage(name: home, page: () => const HomePage(), binding: HomeBinding()),
+        GetPage(name: swap, page: () => const SwapPage(), binding: SwapBinding()),
         GetPage(name: defi, page: () => const DefiPage()),
         GetPage(name: discover, page: () => const DiscoverPage()),
-        GetPage(name: settings, page: () => SettingsPage()),
+        GetPage(name: settings, page: () => const SettingsPage(), binding: SettingsBinding()),
         GetPage(name: selectWallet, page: () => const SelectWalletPage()),
         GetPage(name: send, page: () => const SendPage()),
         GetPage(name: receive, page: () => const ReceivePage()),

@@ -5,10 +5,7 @@ import 'package:rxdart/rxdart.dart';
 import '/presentation/pages/swap/controllers/swap_controller.dart';
 
 class SwapPage extends StatelessWidget {
-  SwapPage({super.key}) {
-    // 初始化Controller
-    Get.put(SwapController());
-  }
+  const SwapPage({super.key});
 
   @override
   Widget build(BuildContext context) {

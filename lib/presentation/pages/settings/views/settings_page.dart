@@ -8,9 +8,7 @@ import '../widgets/setting_item.dart';
 import '/presentation/pages/app/app_controller.dart';
 
 class SettingsPage extends StatelessWidget {
-  SettingsPage({super.key}) {
-    Get.put(SettingsController());
-  }
+  const SettingsPage({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -17,8 +17,8 @@ class AppController extends GetxController {
   final Rx<AppColorScheme> currentColors = Rx<AppColorScheme>(AppColors.light);
 
   final List<Widget> pages = [
-    HomePage(),
-    SwapPage(),
+    const HomePage(),
+    const SwapPage(),
     const DefiPage(),
     const DiscoverPage(),
   ];

@@ -9,9 +9,7 @@ import '/core/constants/app_colors.dart';
 import '/presentation/pages/home/widgets/home_navigation_bar.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({super.key}) {
-    Get.put(HomeController());
-  }
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();

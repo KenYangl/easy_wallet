@@ -4,9 +4,7 @@ import 'package:get/get.dart';
 import '/presentation/pages/onboarding/controllers/create_wallet_controller.dart';
 
 class CreateWalletPage extends StatelessWidget {
-  CreateWalletPage({super.key}) {
-    Get.put(CreateWalletController());
-  }
+  const CreateWalletPage({super.key});
 
   @override
   Widget build(BuildContext context) {
