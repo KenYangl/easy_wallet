@@ -35,6 +35,26 @@ class HomeController extends GetxController {
     Get.toNamed(AppRoutes.getFullRoute(AppRoutes.settings));
   }
 
+  /// 导航到转账页面
+  void navigateToSendPage() {
+    Get.toNamed(AppRoutes.send);
+  }
+
+  /// 导航到收款页面
+  void navigateToReceivePage() {
+    Get.toNamed(AppRoutes.receive);
+  }
+
+  /// 导航到购买页面
+  void navigateToBuyPage() {
+    Get.toNamed(AppRoutes.buy);
+  }
+
+  /// 导航到交易历史页面
+  void navigateToTransactionHistoryPage() {
+    Get.toNamed(AppRoutes.transactionHistory);
+  }
+
   /// 加载钱包余额
   // Future<void> loadWalletBalances() async {
   //   try {

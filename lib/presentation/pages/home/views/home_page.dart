@@ -97,7 +97,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
 
           // 转账/收款/购买/交易历史 按钮区域
           SliverToBoxAdapter(
-            child: _buildFunctionSection(colors),
+            child: _buildFunctionSection(colors, homeController),
           ),
 
           const SizedBox(height: 16),
@@ -204,28 +204,39 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   }
 
   /// 构建转账/收款/购买/交易历史 按钮区域
-  Widget _buildFunctionSection(AppColorScheme colors) {
+  Widget _buildFunctionSection(AppColorScheme colors, HomeController homeController) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _buildFunctionButton(colors, '转账', Icons.send),
-          _buildFunctionButton(colors, '收款', Icons.arrow_upward),
-          _buildFunctionButton(colors, '购买', Icons.shopping_cart),
-          _buildFunctionButton(colors, '交易历史', Icons.history),
+          _buildFunctionButton(colors, '转账', Icons.send, onPressed: () {
+            // 处理转账按钮点击事件
+            homeController.navigateToSendPage();
+          }),
+          _buildFunctionButton(colors, '收款', Icons.arrow_upward, onPressed: () {
+            // 处理收款按钮点击事件
+            homeController.navigateToReceivePage();
+          }),
+          _buildFunctionButton(colors, '购买', Icons.shopping_cart, onPressed: () {
+            // 处理购买按钮点击事件
+            homeController.navigateToBuyPage();
+          }),
+          _buildFunctionButton(colors, '交易历史', Icons.history, onPressed: () {
+            // 处理交易历史按钮点击事件
+            homeController.navigateToTransactionHistoryPage();
+          }),
         ],
       ),
     );
   }
 
   /// 构建功能按钮
-  Widget _buildFunctionButton(AppColorScheme colors, String text, IconData icon) {
+  Widget _buildFunctionButton(AppColorScheme colors, String text, IconData icon, {VoidCallback? onPressed}) {
     return FunctionIconButton(
       icon: icon,
       label: text,
-      onPressed: () {
-        // 处理按钮点击事件
+      onPressed: onPressed ?? () {
         debugPrint('点击了 $text 按钮');
       },
     );
