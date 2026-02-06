@@ -1,5 +1,9 @@
 import 'package:get/get.dart';
 
+import '/presentation/pages/home/views/buy_page.dart';
+import '/presentation/pages/home/views/receive_page.dart';
+import '/presentation/pages/home/views/send_page.dart';
+import '/presentation/pages/home/views/transaction_history_page.dart';
 import '/presentation/pages/home/views/select_wallet_page.dart';
 import '/presentation/pages/onboarding/views/backup_wallet_tips_page.dart';
 import '/presentation/pages/onboarding/views/create_wallet_page.dart';
@@ -29,6 +33,10 @@ class AppRoutes {
 
   /// Home
   static const String selectWallet = '/select_wallet';
+  static const String send = '/send';
+  static const String receive = '/receive';
+  static const String buy = '/buy';
+  static const String transactionHistory = '/transaction_history';
 
   /// Settings
   static const String settings = '/settings';
@@ -51,6 +59,10 @@ class AppRoutes {
         GetPage(name: discover, page: () => const DiscoverPage()),
         GetPage(name: settings, page: () => const SettingsPage()),
         GetPage(name: selectWallet, page: () => const SelectWalletPage()),
+        GetPage(name: send, page: () => const SendPage()),
+        GetPage(name: receive, page: () => const ReceivePage()),
+        GetPage(name: buy, page: () => const BuyPage()),
+        GetPage(name: transactionHistory, page: () => const TransactionHistoryPage()),
       ],
     ),
   ];

@@ -13,6 +13,7 @@ dependencies:
 
   #cupertino_icons: ^1.0.2             # Cupertino图标库
   get: ^4.6.5                         # GetX状态管理/路由
+  rxdart: ^0.27.7                     # 响应式编程（流/事件）
 
   # 网络相关
   dio: ^4.0.6
@@ -25,6 +26,7 @@ dependencies:
   cached_network_image: ^3.2.3        # 网络图片缓存
   lottie: ^2.0.0                      # Lottie动画
   carousel_slider: ^4.2.1             # 轮播图
+  flutter_sticky_header: ^0.7.0       # 粘性头（TabBar与列表）
 
   # 本地路径和存储
   path_provider: ^2.1.0               # 获取本地路径
@@ -38,7 +40,6 @@ dependencies:
   # 数据库
   hive: ^2.2.3                        # 本地数据库（钱包数据）
   hive_flutter: ^1.1.0                # Hive Flutter适配
-  rxdart: ^0.27.7
 
 dev_dependencies:
   flutter_test:
