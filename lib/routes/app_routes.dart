@@ -14,37 +14,14 @@ import '/presentation/pages/onboarding/views/onboarding_page.dart';
 
 // 主要路由配置
 class AppRoutes {
-  static final List<GetPage> getPages = [
-    // Onboarding
-    GetPage(name: onboarding, page: () => const OnboardingPage()),
-    GetPage(name: createWallet, page: () => const CreateWalletPage()),
-    GetPage(name: importWallet, page: () => const ImportWalletPage()),
-    GetPage(name: backupWalletTips, page: () => const BackupWalletTipsPage()),
-
-    // App
-    GetPage(name: app, page: () => const AppPage()),
-    GetPage(name: home, page: () => const HomePage()),
-    GetPage(name: swap, page: () => const SwapPage()),
-    GetPage(name: defi, page: () => const DefiPage()),
-    GetPage(name: discover, page: () => const DiscoverPage()),
-    GetPage(name: settings, page: () => const SettingsPage()),
-
-    // Home
-    GetPage(name: selectWallet, page: () => const SelectWalletPage()),
-  ];
-
-  /// Onboarding
+  /// 顶级路由
   static const String onboarding = '/onboarding';
   static const String createWallet = '/create_wallet';
   static const String importWallet = '/import_wallet';
   static const String backupWalletTips = '/backup_wallet_tips';
-  static const String backupWalletTipsPage = '/backup_wallet_tips_page';
 
-
-  /// App
+  /// 应用内部路由（需在 AppPage 内部）
   static const String app = '/app';
-
-  /// Bottom navigation bar routes
   static const String home = '/home';
   static const String swap = '/swap';
   static const String defi = '/defi';
@@ -55,4 +32,30 @@ class AppRoutes {
 
   /// Settings
   static const String settings = '/settings';
+
+  static final List<GetPage> getPages = [
+    // Onboarding 流程
+    GetPage(name: onboarding, page: () => const OnboardingPage()),
+    GetPage(name: createWallet, page: () => const CreateWalletPage()),
+    GetPage(name: importWallet, page: () => const ImportWalletPage()),
+    GetPage(name: backupWalletTips, page: () => const BackupWalletTipsPage()),
+
+    // App Shell 及其子页面
+    GetPage(
+      name: app,
+      page: () => const AppPage(),
+      children: [
+        GetPage(name: home, page: () => const HomePage()),
+        GetPage(name: swap, page: () => const SwapPage()),
+        GetPage(name: defi, page: () => const DefiPage()),
+        GetPage(name: discover, page: () => const DiscoverPage()),
+        GetPage(name: settings, page: () => const SettingsPage()),
+        GetPage(name: selectWallet, page: () => const SelectWalletPage()),
+      ],
+    ),
+  ];
+
+  static String getFullRoute(String subRoute) {
+    return '$app$subRoute';
+  }
 }
