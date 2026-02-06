@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../app/app_controller.dart';
 import '../widgets/select_item.dart';
-import '/core/utils/getx_extensions.dart';
-import '/presentation/pages/app/app_controller.dart';
+import '/core/constants/app_colors.dart';
 
 class ThemeSelectPage extends StatelessWidget {
   const ThemeSelectPage({super.key});
@@ -10,14 +10,15 @@ class ThemeSelectPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appController = Get.find<AppController>();
+    final colors = AppColors.of(context);
 
     return Scaffold(
-      backgroundColor: Get.appColors.value.background,
+      backgroundColor: colors.backgroundApp,
       appBar: AppBar(
-        backgroundColor: Get.appColors.value.background,
+        backgroundColor: colors.backgroundApp,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Get.appColors.value.textPrimary),
+          icon: Icon(Icons.arrow_back, color: colors.textPrimary),
           onPressed: () => Get.back(),
         ),
         title: Text(
@@ -25,7 +26,7 @@ class ThemeSelectPage extends StatelessWidget {
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w600,
-            color: Get.appColors.value.textPrimary,
+            color: colors.textPrimary,
           ),
         ),
         centerTitle: true,

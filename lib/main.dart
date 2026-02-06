@@ -9,7 +9,7 @@ import 'core/lang/translation.dart';
 import 'routes/app_routes.dart';
 import 'core/bindings/initial_bindings.dart';
 import 'presentation/pages/onboarding/views/onboarding_page.dart';
-import 'presentation/pages/home/home_page.dart';
+import 'presentation/pages/home/views/home_page.dart';
 
 void main() async {
   // 初始化Flutter绑定（确保在runApp之前）

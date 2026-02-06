@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '/core/utils/getx_extensions.dart';
+import '/core/constants/app_colors.dart';
 
 /// 通用选择项（支持副标题）
 class SelectItem extends StatelessWidget {
@@ -19,15 +19,15 @@ class SelectItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() {
-      final colors = Get.appColors.value;
+    final colors = AppColors.of(context);
+      return Obx(() {
       return InkWell(
         onTap: onTap,
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 0),
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             border: Border(
-              bottom: BorderSide(color: Colors.grey, width: 0.3),
+                    bottom: BorderSide(color: colors.backgroundApp, width: 0.3),
             ),
           ),
           child: Row(

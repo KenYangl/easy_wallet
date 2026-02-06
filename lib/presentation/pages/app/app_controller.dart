@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '/core/constants/storage_keys.dart';
 import '/core/constants/app_colors.dart';
-import '/presentation/pages/home/home_page.dart';
-import '/presentation/pages/swap/swap_page.dart';
+import '../home/views/home_page.dart';
+import '../swap/views/swap_page.dart';
 import '/presentation/pages/defi/defi_page.dart';
 import '/presentation/pages/discover/discover_page.dart';
 

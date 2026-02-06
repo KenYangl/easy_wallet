@@ -1,10 +1,11 @@
 import 'package:get/get.dart';
 
+import '/presentation/pages/home/views/select_wallet_page.dart';
 import '/presentation/pages/onboarding/views/backup_wallet_tips_page.dart';
 import '/presentation/pages/onboarding/views/create_wallet_page.dart';
 import '/presentation/pages/onboarding/views/import_wallet_page.dart';
-import '/presentation/pages/home/home_page.dart';
-import '/presentation/pages/swap/swap_page.dart';
+import '/presentation/pages/home/views/home_page.dart';
+import '/presentation/pages/swap/views/swap_page.dart';
 import '/presentation/pages/defi/defi_page.dart';
 import '/presentation/pages/discover/discover_page.dart';
 import '/presentation/pages/settings/views/settings_page.dart';
@@ -27,6 +28,9 @@ class AppRoutes {
     GetPage(name: defi, page: () => const DefiPage()),
     GetPage(name: discover, page: () => const DiscoverPage()),
     GetPage(name: settings, page: () => const SettingsPage()),
+
+    // Home
+    GetPage(name: selectWallet, page: () => const SelectWalletPage()),
   ];
 
   /// Onboarding
@@ -45,6 +49,9 @@ class AppRoutes {
   static const String swap = '/swap';
   static const String defi = '/defi';
   static const String discover = '/discover';
+
+  /// Home
+  static const String selectWallet = '/select_wallet';
 
   /// Settings
   static const String settings = '/settings';

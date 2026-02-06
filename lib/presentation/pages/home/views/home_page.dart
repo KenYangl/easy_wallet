@@ -1,21 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:easy_wallet/routes/app_routes.dart';
 
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import '/presentation/pages/home/controllers/home_controller.dart';
 import '/presentation/widgets/cells/token_item.dart';
 import '/presentation/widgets/action_buttons/function_icon_button.dart';
-import '/core/utils/getx_extensions.dart';
+import '/core/constants/app_colors.dart';
+import '/presentation/pages/home/widgets/home_navigation_bar.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(vsync: this, length: 2);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final colors = AppColors.of(context);
+
+    final homeController = Get.put(HomeController());
+
     return Scaffold(
-      backgroundColor: Get.appColors.value.background,
-      body: SafeArea(
+      appBar: _buildTopNavigationBar(colors),
+      backgroundColor: colors.backgroundApp,
+      body: Container(
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -23,40 +46,9 @@ class HomePage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // 顶部导航
-                const SizedBox(height: 16),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        const CircleAvatar(
-                          radius: 16,
-                          // backgroundImage: AssetImage('assets/images/avatar.png'),
-                        ),
-                        const SizedBox(width: 8),
-                        Text(
-                          'Wallet1',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            color: Get.appColors.value.textPrimary,
-                          ),
-                        ),
-                        const Icon(Icons.keyboard_arrow_down, size: 16),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Icon(Icons.notifications_none, color: Get.appColors.value.textPrimary),
-                        const SizedBox(width: 16),
-                        Icon(Icons.qr_code, color: Get.appColors.value.textPrimary),
-                        const SizedBox(width: 16),
-                        Icon(Icons.settings, color: Get.appColors.value.textPrimary),
-                      ],
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 24),
+                const SizedBox(height: 8),
+                
+                // const SizedBox(height: 24),
 
                 // 总资产
                 Text(
@@ -64,10 +56,12 @@ class HomePage extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 36,
                     fontWeight: FontWeight.w700,
-                    color: Get.appColors.value.textPrimary,
+                    color: colors.textPrimary,
                   ),
                 ),
+
                 const SizedBox(height: 4),
+                
                 Text(
                   '+',
                   style: TextStyle(
@@ -75,6 +69,7 @@ class HomePage extends StatelessWidget {
                     color: Colors.green,
                   ),
                 ),
+
                 const SizedBox(height: 32),
 
                 // 功能按钮
@@ -103,6 +98,7 @@ class HomePage extends StatelessWidget {
                     ),
                   ],
                 ),
+
                 const SizedBox(height: 24),
 
                 // 银行卡横幅
@@ -123,7 +119,7 @@ class HomePage extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
-                              color: Get.appColors.value.textPrimary,
+                              color: colors.textPrimary,
                             ),
                           ),
                           const SizedBox(height: 4),
@@ -139,6 +135,7 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                 ),
+
                 const SizedBox(height: 24),
 
                 // 币种/NFT 标签
@@ -149,7 +146,7 @@ class HomePage extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
-                        color: Get.appColors.value.textPrimary,
+                        color: colors.textPrimary,
                       ),
                     ),
                     const SizedBox(width: 24),
@@ -161,7 +158,7 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                     const Spacer(),
-                    Icon(Icons.add_circle_outline, color: Get.appColors.value.textPrimary),
+                    Icon(Icons.add_circle_outline, color: colors.textPrimary),
                   ],
                 ),
                 const SizedBox(height: 16),
@@ -220,36 +217,42 @@ class HomePage extends StatelessWidget {
             ),
           ),
         ),
-      ),
-      // 底部导航
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        currentIndex: 0,
-        selectedItemColor: const Color(0xFF80E8FF),
-        unselectedItemColor: Colors.grey,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: '首页',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.credit_card),
-            label: 'Card',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.flash_on),
-            label: '闪兑',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.developer_board),
-            label: 'DeFi',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.explore),
-            label: '发现',
-          ),
-        ],
-      ),
+      )
     );
+  }
+
+  /// 构建顶部导航栏
+  PreferredSizeWidget _buildTopNavigationBar(AppColorScheme colors) {
+    final homeController = Get.find<HomeController>();
+    return AppBar(
+        backgroundColor: colors.backgroundApp,
+        elevation: 0, // 移除顶部阴影
+        toolbarHeight: 44,
+        automaticallyImplyLeading: false, // 去掉默认的返回箭头
+        titleSpacing: 0, // 去掉标题的默认间距
+        title: HomeNavigationBar(
+          walletName: 'Wallet1',
+          onWalletTap: () {
+            // 处理钱包点击事件
+            homeController.navigateToSelectWalletPage();
+          },
+          onCopyTap: () {
+            // 处理复制钱包地址点击事件
+            homeController.navigateToCopyAddressPage();
+          },
+          onNotificationTap: () {
+            // 处理通知点击事件
+            homeController.navigateToMessagePage();
+          },
+          onQrCodeTap: () {
+            // 处理二维码点击事件
+            homeController.navigateToScanQRCodePage();
+          },
+          onSettingsTap: () {
+            // 处理设置点击事件
+            homeController.navigateToSettingsPage();
+          },
+        ),
+      );
   }
 }

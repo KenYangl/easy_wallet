@@ -24,7 +24,7 @@ abstract class AppColorScheme {
   // 按钮次要色（导入钱包边框）
   Color get secondaryButtonBorder;
   // 背景色
-  Color get background;
+  Color get backgroundApp;
   // 指示器激活色
   Color get indicatorActive;
   // 指示器未激活色
@@ -44,7 +44,7 @@ class _LightColors implements AppColorScheme {
   @override
   Color get secondaryButtonBorder => const Color(0xFF80E8FF);
   @override
-  Color get background => Colors.white;
+  Color get backgroundApp => Colors.white;
   @override
   Color get indicatorActive => const Color(0xFF80E8FF);
   @override
@@ -64,7 +64,7 @@ class _DarkColors implements AppColorScheme {
   @override
   Color get secondaryButtonBorder => const Color(0xFF00A3BF);
   @override
-  Color get background => const Color(0xFF121212);
+  Color get backgroundApp => const Color(0xFF121212);
   @override
   Color get indicatorActive => const Color(0xFF00A3BF);
   @override
