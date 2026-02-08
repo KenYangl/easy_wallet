@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import '../../presentation/pages/onboarding/controllers/onboarding_controller.dart';
 import '../services/network_service.dart';
-import '/core/constants/storage_keys.dart';
+import '../services/native_service.dart';
 import '/presentation/pages/app/app_controller.dart';
 
 // 全局依赖绑定（启动时初始化控制器）
@@ -10,6 +10,8 @@ class InitialBindings extends Bindings {
   void dependencies() {
     // 懒加载Controllers
     Get.lazyPut(() => OnboardingController());
+
+    Get.lazyPut(() => NativeService()); 
 
     Get.put(AppController(), permanent: true);
 
