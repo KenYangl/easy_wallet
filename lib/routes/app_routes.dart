@@ -4,10 +4,6 @@ import 'package:get/get.dart';
 import '/core/bindings/app_bindings.dart';
 import '/core/bindings/settings_binding.dart';
 import '/core/bindings/create_wallet_binding.dart';
-import '/core/bindings/swap_binding.dart';
-import '/core/bindings/home_binding.dart';
-import '/core/bindings/defi_binding.dart';
-import '/core/bindings/discover_binding.dart';
 
 import '/presentation/pages/home/views/buy_page.dart';
 import '/presentation/pages/home/views/receive_page.dart';
@@ -60,10 +56,10 @@ class AppRoutes {
     // App 
     GetPage(name: app, page: () => const AppPage(), binding: AppBindings()),
     // Navigation bottom bar Routes
-    GetPage(name: home, page: () => const HomePage(), binding: HomeBinding()),
-    GetPage(name: swap, page: () => const SwapPage(), binding: SwapBinding()),
-    GetPage(name: defi, page: () => const DefiPage(), binding: DefiBinding()),
-    GetPage(name: discover, page: () => const DiscoverPage(), binding: DiscoverBinding()),
+    GetPage(name: home, page: () => const HomePage()),
+    GetPage(name: swap, page: () => const SwapPage()),
+    GetPage(name: defi, page: () => const DefiPage()),
+    GetPage(name: discover, page: () => const DiscoverPage()),
     // Home sub routes
     GetPage(name: settings, page: () => const SettingsPage(), binding: SettingsBinding()),
     GetPage(name: selectWallet, page: () => const SelectWalletPage()),

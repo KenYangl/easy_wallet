@@ -26,14 +26,14 @@ class AppController extends GetxController {
   int get selectedIndex => _selectedIndex.value;
   set selectedIndex(int value) => _selectedIndex.value = value;
 
-  List<Widget> get pages => [
+  final List<Widget> pages = [
     const HomePage(),
     const SwapPage(),
     const DefiPage(),
     const DiscoverPage(),
   ];
 
-  List<Map<String, dynamic>> get navigationBars => [
+  final List<Map<String, dynamic>> navigationBars = [
     {
       'icon': const Icon(Icons.home_outlined),
       'selectedIcon': const Icon(Icons.home),
