@@ -6,8 +6,6 @@ abstract class _PlatformService {
   Future<String> createWallet();
   /// 恢复钱包
   Future <String> restoreWallet(String mnemonic);
-  /// 带参数调用原生方法  
-  Future<String> processData(String param1, int param2);
 }
 
 class NativeService implements _PlatformService {
@@ -36,16 +34,6 @@ class NativeService implements _PlatformService {
     }
     throw UnimplementedError("当前平台不支持");
   }
-
-  @override
-  Future<String> processData(String param1, int param2) async {
-    if (GetPlatform.isIOS) {
-      return await _IosPlatformService().processData(param1, param2);
-    } else if (GetPlatform.isAndroid) {
-      return await _AndroidPlatformService().processData(param1, param2);
-    }
-    throw UnimplementedError("当前平台不支持");
-  }
 }
 
 class _IosPlatformService implements _PlatformService {
@@ -54,12 +42,13 @@ class _IosPlatformService implements _PlatformService {
   factory _IosPlatformService() => _instance;
   _IosPlatformService._internal();
 
-  static const platform = MethodChannel('com.easywallet/native');
+  static const platform = MethodChannel('com.wallet.core/native');
 
   @override
   Future<String> createWallet() async {
     try {
       final String result = await platform.invokeMethod('createWallet');
+      print('createWallet: $result');
       return result;
     } on PlatformException catch (e) {
       throw Exception("调用失败: '${e.message}'");
@@ -70,22 +59,10 @@ class _IosPlatformService implements _PlatformService {
   Future <String> restoreWallet(String mnemonic) async {
     try {
       final String result = await platform.invokeMethod('restoreWallet', mnemonic);
+      print('restoreWallet: $result');
       return result;
     } on PlatformException catch (e) {
       throw Exception("调用失败: '${e.message}'");
-    }
-  }
-
-  @override
-  Future<String> processData(String param1, int param2) async {
-    final Map<String, dynamic> args = {
-      'param1': param1,
-      'param2': param2,
-    };
-    try {
-      return await platform.invokeMethod('processData', args);
-    } on PlatformException catch (e) {
-      throw Exception("处理失败: '${e.message}'");
     }
   }
 }
@@ -96,7 +73,7 @@ class _AndroidPlatformService implements _PlatformService {
   factory _AndroidPlatformService() => _instance;
   _AndroidPlatformService._internal();
 
-  static const platform = MethodChannel('com.easywallet/native');
+  static const platform = MethodChannel('com.wallet.core/native');
 
   @override
   Future<String> createWallet() async {
@@ -115,19 +92,6 @@ class _AndroidPlatformService implements _PlatformService {
       return result;
     } on PlatformException catch (e) {
       throw Exception("调用失败: '${e.message}'");
-    }
-  }
-
-  @override
-  Future<String> processData(String param1, int param2) async {
-    final Map<String, dynamic> args = {
-      'param1': param1,
-      'param2': param2,
-    };
-    try {
-      return await platform.invokeMethod('processData', args);
-    } on PlatformException catch (e) {
-      throw Exception("处理失败: '${e.message}'");
     }
   }
 }

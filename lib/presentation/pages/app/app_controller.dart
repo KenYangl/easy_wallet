@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '/routes/app_routes.dart';
 import '/core/constants/storage_keys.dart';
 import '/core/constants/app_colors.dart';
 import '../home/views/home_page.dart';
 import '../swap/views/swap_page.dart';
 import '/presentation/pages/defi/defi_page.dart';
 import '/presentation/pages/discover/discover_page.dart';
-import '/presentation/pages/home/controllers/home_controller.dart';
-import '/presentation/pages/swap/controllers/swap_controller.dart';
-import '/presentation/pages/defi/defi_controller.dart';
-import '/presentation/pages/discover/discover_controller.dart';
 
 class AppController extends GetxController {
   // 钱包状态（响应式）

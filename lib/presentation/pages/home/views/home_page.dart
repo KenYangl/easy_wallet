@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:flutter_sticky_header/flutter_sticky_header.dart';
 
 import '/presentation/pages/home/controllers/home_controller.dart';
 import '/presentation/widgets/cells/token_item.dart';

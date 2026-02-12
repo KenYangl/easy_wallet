@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'app_controller.dart';
-import '/presentation/pages/home/controllers/home_controller.dart';
-import '/presentation/pages/swap/controllers/swap_controller.dart';
-import '/presentation/pages/defi/defi_controller.dart';
-import '/presentation/pages/discover/discover_controller.dart';
 
 class AppPage extends StatefulWidget {
   const AppPage({super.key});
